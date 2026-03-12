@@ -1,0 +1,50 @@
+body{
+font-family: Iosevka Charon;
+text-align: center;
+background: #f4f4f4;
+}
+
+input{
+padding:20px;
+}
+
+button{
+padding:20px
+}
+
+li{
+    background: #787878;
+    margin: 10px;
+    padding: 10px;
+    list-style: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+body.dark {
+  background-color: #222;
+  color: #f4f4f4;
+}
+body.dark input {
+  background-color: #333;
+  color: #f4f4f4:
+  border: 1px solid #555;
+}
+body.dark button {
+  background-color: #555;
+  color: #f4f4f4;
+}
+body.dark li {
+  background: #444;
+  color: #f4f4f4;
+}
+.done{
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.delete-btn{
+    font-size: 10px;
+    padding: 2px 6px;
+    margin-left: 10px;
+}
