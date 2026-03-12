@@ -48,3 +48,14 @@ body.dark li {
     padding: 2px 6px;
     margin-left: 10px;
 }
+
+.signature {
+    position: fixed;       /* stays in the corner even when scrolling */
+    bottom: 10px;          /* distance from bottom */
+    right: 10px;           /* distance from right */
+    font-size: 12px;       /* small text */
+    color: #888888;        /* gray color */
+    font-family: Arial, sans-serif;
+    pointer-events: none;  /* so clicks pass through it */
+    z-index: 9999;         /* stays on top of other elements */
+}
