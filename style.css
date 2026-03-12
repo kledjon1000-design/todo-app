@@ -54,7 +54,7 @@ body.dark li {
     bottom: 10px;          /* distance from bottom */
     right: 10px;           /* distance from right */
     font-size: 12px;       /* small text */
-    color: #888888;        /* gray color */
+    color: #000000;        /* gray color */
     font-family: Arial, sans-serif;
     pointer-events: none;  /* so clicks pass through it */
     z-index: 9999;         /* stays on top of other elements */
