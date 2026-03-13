@@ -1,12 +1,13 @@
 function addTask(){
 
 let input = document.getElementById("taskInput");
+let category = document.getElementById("category").value;
 let task = input.value;
 
 if(task === "") return;
 
 let li = document.createElement("li");
-li.textContent = task;
+li.textContent = "[" + category + "] " + task;
 
 li.addEventListener("click", function(){
     li.classList.toggle("done");
@@ -74,3 +75,11 @@ function loadTasks(){
 }
 
 window.onload = loadTasks;
+
+
+// ENTER KEY FEATURE
+document.getElementById("taskInput").addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        addTask();
+    }
+});
