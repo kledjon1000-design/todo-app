@@ -14,6 +14,12 @@ li.addEventListener("click", function(){
     saveTasks();
 });
 
+deleteBtn.onclick = function(){
+li.remove();
+saveTasks();
+updateTaskCount();
+}
+
 let deleteBtn = document.createElement("button");
 deleteBtn.classList.add("delete-btn");
 deleteBtn.textContent = "X";
@@ -83,3 +89,5 @@ document.getElementById("taskInput").addEventListener("keypress", function(e){
         addTask();
     }
 });
+
+
