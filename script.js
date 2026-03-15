@@ -12,13 +12,8 @@ li.textContent = "[" + category + "] " + task;
 li.addEventListener("click", function(){
     li.classList.toggle("done");
     saveTasks();
+    updateTaskCount();
 });
-
-deleteBtn.onclick = function(){
-li.remove();
-saveTasks();
-updateTaskCount();
-}
 
 let deleteBtn = document.createElement("button");
 deleteBtn.classList.add("delete-btn");
@@ -27,15 +22,8 @@ deleteBtn.textContent = "X";
 deleteBtn.onclick = function(){
     li.remove();
     saveTasks();
+    updateTaskCount();
 };
-
-li.ondblclick = function(){
-    let newTask = prompt("Edit task:", li.firstChild.textContent);
-    if(newTask){
-        li.firstChild.textContent = newTask;
-        saveTasks();
-    }
-}
 
 li.appendChild(deleteBtn);
 
@@ -44,50 +32,42 @@ document.getElementById("taskList").appendChild(li);
 input.value = "";
 
 saveTasks();
+updateTaskCount();
 }
 
-function toggleDarkMode(){
-    document.body.classList.toggle("dark");
+function updateTaskCount(){
+let tasks = document.querySelectorAll("#taskList li:not(.done)");
+document.getElementById("taskCount").textContent =
+"Tasks left: " + tasks.length;
 }
 
 function saveTasks(){
-    localStorage.setItem("tasks", document.getElementById("taskList").innerHTML);
+localStorage.setItem("tasks", document.getElementById("taskList").innerHTML);
 }
 
 function loadTasks(){
-    let saved = localStorage.getItem("tasks");
-
-    if(saved){
-        document.getElementById("taskList").innerHTML = saved;
-
-        document.querySelectorAll("#taskList li").forEach(li => {
-
-            li.onclick = function(){
-                li.classList.toggle("done");
-                saveTasks();
-            };
-
-            let btn = li.querySelector("button");
-
-            if(btn){
-                btn.onclick = function(){
-                    li.remove();
-                    saveTasks();
-                };
-            }
-
-        });
-    }
+let saved = localStorage.getItem("tasks");
+if(saved){
+document.getElementById("taskList").innerHTML = saved;
+}
+updateTaskCount();
 }
 
-window.onload = loadTasks;
+function toggleDarkMode(){
+document.body.classList.toggle("dark");
 
+if(document.body.classList.contains("dark")){
+    localStorage.setItem("darkMode","on");
+}else{
+    localStorage.setItem("darkMode","off");
+}
+}
 
-// ENTER KEY FEATURE
-document.getElementById("taskInput").addEventListener("keypress", function(e){
-    if(e.key === "Enter"){
-        addTask();
-    }
-});
+function loadDarkMode(){
+if(localStorage.getItem("darkMode") === "on"){
+    document.body.classList.add("dark");
+}
+}
 
-
+loadTasks();
+loadDarkMode();
