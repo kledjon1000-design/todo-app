@@ -19,7 +19,8 @@ let deleteBtn = document.createElement("button");
 deleteBtn.classList.add("delete-btn");
 deleteBtn.textContent = "X";
 
-deleteBtn.onclick = function(){
+deleteBtn.onclick = function(e){
+    e.stopPropagation(); // prevents crossing out when clicking X
     li.remove();
     saveTasks();
     updateTaskCount();
@@ -47,9 +48,34 @@ localStorage.setItem("tasks", document.getElementById("taskList").innerHTML);
 
 function loadTasks(){
 let saved = localStorage.getItem("tasks");
+
 if(saved){
 document.getElementById("taskList").innerHTML = saved;
+
+let tasks = document.querySelectorAll("#taskList li");
+
+tasks.forEach(function(li){
+
+    li.addEventListener("click", function(){
+        li.classList.toggle("done");
+        saveTasks();
+        updateTaskCount();
+    });
+
+    let deleteBtn = li.querySelector(".delete-btn");
+
+    if(deleteBtn){
+        deleteBtn.onclick = function(e){
+            e.stopPropagation();
+            li.remove();
+            saveTasks();
+            updateTaskCount();
+        };
+    }
+
+});
 }
+
 updateTaskCount();
 }
 
@@ -71,3 +97,10 @@ if(localStorage.getItem("darkMode") === "on"){
 
 loadTasks();
 loadDarkMode();
+
+
+document.getElementById("taskInput").addEventListener("keypress", function(e){
+if(e.key === "Enter"){
+    addTask();
+}
+});
