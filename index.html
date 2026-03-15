@@ -1,28 +1,33 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Todo App</title>
-    <link rel="stylesheet" href="style.css">
+<title>My Tasks</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <h1>My Tasks</h1>
 
-<p id="taskCount">Tasks left: 0</p>
+<div class="controls">
 
 <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
 
 <input id="taskInput" placeholder="Enter task">
 
-<button onclick="addTask()">Add</button>
+<button onclick="addTask()">Add Task</button>
 
 <select id="category">
-    <option>School</option>
-    <option>Work</option>
-    <option>Personal</option>
-    <option>Other</option>
+<option>School</option>
+<option>Work</option>
+<option>Personal</option>
 </select>
+
+</div>
+
+<p id="taskCount">Tasks left: 0</p>
 
 <ul id="taskList"></ul>
 
@@ -32,3 +37,5 @@
 
 </body>
 </html>
+
+
