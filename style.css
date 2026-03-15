@@ -1,61 +1,91 @@
-body{
-font-family: Iosevka Charon;
-text-align: center;
-background: #f4f4f4;
+/* --- Base Styles --- */
+body {
+    font-family: Iosevka Charon;
+    text-align: center;
+    background: #f4f4f4;
+    color: #000;
 }
 
-input{
-padding:20px;
+input {
+    padding: 20px;
+    color: #222; /* text color in light mode */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: color 0.3s, background-color 0.3s, border-color 0.3s;
 }
 
-button{
-padding:20px
+input::placeholder {
+    color: #888; /* placeholder in light mode */
 }
 
-li{
+button {
+    padding: 20px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+li {
     background: #787878;
     margin: 10px;
     padding: 10px;
     list-style: none;
     border: 1px solid #ccc;
     border-radius: 5px;
+    color: #fff;
+    transition: color 0.3s, background-color 0.3s;
 }
 
-body.dark {
-  background-color: #222;
-  color: #f4f4f4;
-}
-body.dark input {
-  background-color: #333;
-  color: #f4f4f4:
-  border: 1px solid #555;
-}
-body.dark button {
-  background-color: #555;
-  color: #f4f4f4;
-}
-body.dark li {
-  background: #444;
-  color: #f4f4f4;
-}
-.done{
-  text-decoration: line-through;
-  opacity: 0.6;
+.done {
+    text-decoration: line-through;
+    opacity: 0.6;
 }
 
-.delete-btn{
+.delete-btn {
     font-size: 10px;
     padding: 2px 6px;
     margin-left: 10px;
 }
 
+/* Signature */
 .signature {
-    position: fixed;       /* stays in the corner even when scrolling */
-    bottom: 10px;          /* distance from bottom */
-    right: 10px;           /* distance from right */
-    font-size: 12px;       /* small text */
-    color: #000000;        /* gray color */
-    font-family: Arial, sans-serif;
-    pointer-events: none;  /* so clicks pass through it */
-    z-index: 9999;         /* stays on top of other elements */
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 16px;
+    color: #000; /* light mode */
+    font-family: monospace;
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 9999;
+    transition: color 0.3s ease;
+}
+
+/* --- Dark Mode --- */
+body.dark {
+    background-color: #222;
+    color: #f4f4f4;
+}
+
+body.dark input {
+    background-color: #333;
+    color: #f4f4f4;  /* ✅ fixed colon here */
+    border: 1px solid #555;
+}
+
+body.dark input::placeholder {
+    color: #aaa; /* placeholder visible in dark mode */
+}
+
+body.dark button {
+    background-color: #555;
+    color: #f4f4f4;
+}
+
+body.dark li {
+    background: #444;
+    color: #f4f4f4;
+}
+
+body.dark .signature {
+    color: white;
 }
